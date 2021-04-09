@@ -19,7 +19,6 @@ var pacientes = document.querySelectorAll(".paciente"); //Retorna um array com t
 
 console.log(pacientes)
 
-
 //INICIO FOR BUSCANDO PACIENTE /////////////////////////////////////////
 for(var i = 0; i < pacientes.length; i++){
 //var pacienteI = pacientes[i]
@@ -28,9 +27,9 @@ for(var i = 0; i < pacientes.length; i++){
 var peso = pacientes[i].querySelector(".info-peso").textContent;
 var altura = pacientes[i].querySelector(".info-altura").textContent;
 
-var imc = (peso / (altura * altura));
+var calcimc = (peso / (altura * altura));
 var tdImc = pacientes[i].querySelector(".info-imc");
-tdImc.textContent = imc.toFixed(2);
+tdImc.textContent = calcimc.toFixed(2);
 //Validação dos dados inseridos na tabela
 //Pesos válidos entre 0 e 300 kg
 //Altura válida entre 0 e 2.5 m
@@ -60,3 +59,70 @@ if(validacaoPeso == false && validacaoAltura == false){
 }
 }
 //FINAL FOR BUSCANDO PACIENTE /////////////////////////////////////////
+
+
+//ADICIONANDO EVENTO CLICK//
+var adicionarPaciente = document.querySelector("#adicionar-paciente")
+console.log(adicionarPaciente.textContent)
+
+// //ADICIONANDO EVENTO CLICK COM FUNÇÃO//
+// adicionarPaciente.addEventListener("click", mostraMensagem)
+// function mostraMensagem(){
+//     mensagem = "Fui clicado!"
+//     console.log(mensagem)
+// }
+
+// //ADICIONANDO EVENTO CLICK COM FUNÇÃO ANONIMA//
+// adicionarPaciente.addEventListener("click", function(){mensagem = "Fui clicado!"; console.log(mensagem)})
+
+//ADICIONANDO EVENTO CLICK COM FUNÇÃO ANONIMA E EVENTO PREVENTDEFAULT//
+adicionarPaciente.addEventListener("click", function(event){;
+    event.preventDefault();
+    mensagem = "Fui clicado!";
+    console.log(mensagem)
+
+
+//ADICIONANDO PACIENTES NA TABELA
+//BUSCANDO DADOS FORM//
+var form = document.querySelector("#formulario")
+console.log(form)
+
+//Depois de selecionado o form, precisamos ter acesso a cada um dos inputs. 
+//Para fazer isto podemos nos apoiar numa característica do form, que é o acesso que temos aos 
+//seus inputs como se fossem propriedades do form, bastando usar como nome da propriedade os atributos 
+//name dos inputs. Lembrando que para pegar o valor digitado dentro de um input, devemos acessar a 
+//sua propriedade value.
+
+var nome = form.nome.value
+var peso = form.peso.value
+var altura = form.altura.value
+var gordura = form.gordura.value
+
+//FUNÇÃO document.createElement():
+
+var novoPacienteTr =  document.createElement("tr")
+
+var nomeTd = document.createElement("td");
+var pesoTd = document.createElement("td");
+var alturaTd = document.createElement("td");
+var gorduraTd = document.createElement("td");
+
+
+nomeTd.textContent = nome;
+pesoTd.textContent = peso;
+alturaTd.textContent = altura;
+gorduraTd.textContent = gordura;
+
+//FUNÇÃO APPENDCHILD
+
+novoPacienteTr.appendChild(nomeTd)
+novoPacienteTr.appendChild(pesoTd)
+novoPacienteTr.appendChild(alturaTd)
+novoPacienteTr.appendChild(gorduraTd)
+
+console.log(novoPacienteTr)
+
+var adicionaTabela = document.querySelector("#tabela-pacientes")
+adicionaTabela.appendChild(novoPacienteTr)
+
+})

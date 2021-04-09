@@ -1,4 +1,4 @@
-alert("JavaSript principal.js foi carregado!")
+alert("JavaSript principal.js foi carregado!");
 console.log("JavaSript principal.js foi carregado!")
 
 //Mudando o nome de Aparecida Nutrição para Luiz Pezzi Nutrição
@@ -19,8 +19,9 @@ var pacientes = document.querySelectorAll(".paciente"); //Retorna um array com t
 
 console.log(pacientes)
 
-for(var i = 0; i < pacientes.length; i++){
 
+//INICIO FOR BUSCANDO PACIENTE /////////////////////////////////////////
+for(var i = 0; i < pacientes.length; i++){
 //var pacienteI = pacientes[i]
 //console.log(pacienteI)
 
@@ -57,8 +58,5 @@ if(altura < alturaMin || altura > alturaMax){
 if(validacaoPeso == false && validacaoAltura == false){
     tdImc.textContent = "Peso e altura inválidos!"
 }
-
 }
-
- 
-
+//FINAL FOR BUSCANDO PACIENTE /////////////////////////////////////////
